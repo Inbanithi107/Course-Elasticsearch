@@ -22,6 +22,8 @@ public class Course {
 	
 	private ActivityType type;
 	
+	private String gradeRange;
+	
 	private int minAge;
 	
 	private int maxAge;
@@ -100,6 +102,21 @@ public class Course {
 
 	public void setNextSessionDate(Instant nextSessionDate) {
 		this.nextSessionDate = nextSessionDate;
+	}
+
+	public String getGradeRange() {
+		return gradeRange;
+	}
+
+	public void setGradeRange(String gradeRange) {
+		this.gradeRange = gradeRange;
+	}
+
+	@Override
+	public String toString() {
+		return "Course [id=" + id + ", title=" + title + ", description=" + description + ", category=" + category
+				+ ", type=" + type + ", gradeRange=" + gradeRange + ", minAge=" + minAge + ", maxAge=" + maxAge
+				+ ", price=" + price + ", nextSessionDate=" + nextSessionDate + "]";
 	}
 	
 	
