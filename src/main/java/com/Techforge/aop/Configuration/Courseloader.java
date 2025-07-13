@@ -14,6 +14,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
 import com.Techforge.aop.Entity.Course;
+import com.Techforge.aop.Repository.CourseRepository;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -23,8 +24,15 @@ public class Courseloader implements CommandLineRunner{
 	
 	private final ObjectMapper mapper;
 	
-	public Courseloader(ObjectMapper mapper) {
+	private final CourseRepository courseRepository;
+	
+	/**
+	 * Constructor Injection from ApplicationContext
+	 * @param mapper injected from Bean annotated method
+	 */
+	public Courseloader(ObjectMapper mapper, CourseRepository repository) {
 		this.mapper = mapper;
+		this.courseRepository = repository;
 	}
 
 	@Override
@@ -32,9 +40,8 @@ public class Courseloader implements CommandLineRunner{
 		
 		InputStream stream = new ClassPathResource("sample-courses.json").getInputStream();
 		List<Course> courses = mapper.readValue(stream, new TypeReference<List<Course>>() {});
-		for(Course course : courses) {
-			System.out.println(course.toString());
-		}
+		courseRepository.saveAll(courses);
+		System.out.println("courses saved successfully");
 		
 	}
 
