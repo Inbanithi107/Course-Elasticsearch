@@ -37,8 +37,8 @@ public class Courseloader implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		
-		InputStream stream = new ClassPathResource("sample-courses.json").getInputStream();
+		courseRepository.deleteAll();
+		InputStream stream = new ClassPathResource("sample-courses (1).json").getInputStream();
 		List<Course> courses = mapper.readValue(stream, new TypeReference<List<Course>>() {});
 		courseRepository.saveAll(courses);
 		System.out.println("courses saved successfully");

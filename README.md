@@ -25,7 +25,7 @@ You should see a JSON response like:
 
 ```json
 {
-  "name" : "de1a518344c1", //UUID of the container
+  "name" : "de1a518344c1",
   "cluster_name" : "docker-cluster",
   "cluster_uuid" : "....",
   "version" : {
@@ -35,3 +35,13 @@ You should see a JSON response like:
   ...
 }
 ```
+## Initializing courses in Elasticsearch
+
+Just during the startup of the application all 
+the courses will be added to Elasticsearch.
+After application satartup you will see a prompt in console
+
+```bash
+courses saved successfully
+```
+if you see this line in the console then the courses are initialized in the Elasticsearch
