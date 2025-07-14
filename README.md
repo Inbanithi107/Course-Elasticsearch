@@ -45,3 +45,8 @@ After application satartup you will see a prompt in console
 courses saved successfully
 ```
 if you see this line in the console then the courses are initialized in the Elasticsearch
+
+# API
+http://localhost:8080/api/search/searchcourse?q=S
+
+Here **q** is the query for fuzzy search
